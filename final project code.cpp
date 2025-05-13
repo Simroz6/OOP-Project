@@ -486,11 +486,10 @@ public:
 
 
 
-    bool isEqual(Candidate& other) {
+    bool operator==(const Candidate& other) const {
+    return (ID == other.ID && name == other.name);
+}
 
-        return (ID == other.ID && name == other.name);
-
-    }
 
 };
 
@@ -1004,12 +1003,9 @@ public:
 
             for (int j = i + 1; j < candidateCount; j++) {
 
-                if (candidates[i]->isEqual(*candidates[j])) {
-
-                    return "Duplicate candidate found";
-
-                }
-
+                if (*candidates[i] == *candidates[j]) {
+    return "Duplicate candidate found";
+}
             }
 
         }
